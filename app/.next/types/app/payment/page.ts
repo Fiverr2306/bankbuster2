@@ -1,4 +1,4 @@
-// File: /home/omharsule/Desktop/bankbuster-website/app/app/payment/page.tsx
+// File: /home/omharsule/Desktop/bankbuster2/app/app/payment/page.tsx
 import * as entry from '../../../../app/payment/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

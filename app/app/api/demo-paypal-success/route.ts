@@ -1,6 +1,5 @@
 
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '@/lib/db'
 
 export const dynamic = 'force-dynamic'
 
@@ -17,22 +16,22 @@ export async function GET(request: NextRequest) {
     }
 
     // Find and update the payment session
-    const paymentSession = await prisma.paymentSession.findUnique({
-      where: { sessionId },
-    })
+    // const paymentSession = await prisma.paymentSession.findUnique({
+    //   where: { sessionId },
+    // })
 
-    if (!paymentSession) {
-      return NextResponse.redirect(`${baseUrl}/payment?error=session_not_found`)
-    }
+    // if (!paymentSession) {
+    //   return NextResponse.redirect(`${baseUrl}/payment?error=session_not_found`)
+    // }
 
     // Update session as completed
-    await prisma.paymentSession.update({
-      where: { sessionId },
-      data: {
-        status: 'completed',
-        paypalTransactionId: `DEMO_TXN_${Date.now()}`,
-      },
-    })
+    // await prisma.paymentSession.update({
+    //   where: { sessionId },
+    //   data: {
+    //     status: 'completed',
+    //     paypalTransactionId: `DEMO_TXN_${Date.now()}`,
+    //   },
+    // })
 
     // Generate access token for upload page
     const token = Buffer.from(`${sessionId}:${Date.now()}`).toString('base64')

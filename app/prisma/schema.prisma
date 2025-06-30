@@ -1,0 +1,53 @@
+
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+    binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+    output = "/home/ubuntu/bankbuster-website/app/node_modules/.prisma/client"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model PaymentSession {
+  id              String    @id @default(cuid())
+  sessionId       String    @unique
+  email           String
+  amount          Float
+  status          String    @default("pending") // pending, completed, failed
+  paypalTransactionId String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  expiresAt       DateTime  
+  documentsUploaded Boolean @default(false)
+  
+  @@map("payment_sessions")
+}
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  page      String?  // which page the form was submitted from
+  createdAt DateTime @default(now())
+  
+  @@map("contact_submissions")
+}
+
+model DocumentUpload {
+  id              String   @id @default(cuid())
+  sessionId       String
+  fileName        String
+  fileSize        Int
+  fileType        String
+  uploadedAt      DateTime @default(now())
+  emailSent       Boolean  @default(false)
+  
+  @@map("document_uploads")
+}

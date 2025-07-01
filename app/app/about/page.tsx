@@ -199,7 +199,7 @@ export default function AboutPage() {
                   <div>
                     <div className="font-medium">Email</div>
                     <a href="mailto:chuck@bankbuster.net" className="text-bb-bright-blue hover:underline">
-                      chuck@bankbuster.net
+                      save@bankbuster.net
                     </a>
                   </div>
                 </div>

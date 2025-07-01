@@ -21,7 +21,7 @@ export default function Footer() {
             <div className="flex items-center space-x-2 text-sm">
               <Mail className="h-4 w-4" />
               <a href="mailto:chuck@bankbuster.net" className="hover:text-blue-200 transition-colors">
-                chuck@bankbuster.net
+                save@bankbuster.net
               </a>
             </div>
           </div>
